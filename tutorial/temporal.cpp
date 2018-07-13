@@ -30,7 +30,7 @@ typedef vector<short> coord_t;
 typedef vector<short> coord_ssd_t;
 typedef vector<coord_ssd_t> heap_t;
 heap_t offsets_ssd[height][width];
-cout<<"capacity "<<offsets_ssd[0][0].capacity()<<endl;
+//cout<<"capacity "<<offsets_ssd[0][0].capacity()<<endl;
 
 Buffer<short> neighbor_b(width, height, n_channels);
 
@@ -58,7 +58,7 @@ void get_input() {
 
     for(int i = 0; i < n_frames; i++) {
 
-        path = "./frames/f_" + to_string(i + 1) + ".jpg";
+        path = "./frames/f_" + to_string(i + 1) + ".png";
         input[i] = Tools::load_image(path);   
 
     }
@@ -227,8 +227,8 @@ void propagate_scanline() {
 
             }
         
-            //prop_offset = sort_neighbors(prop_offset);
-            //offsets_ssd[i][j] = prop_offset;
+            prop_offset = sort_neighbors(prop_offset);
+            offsets_ssd[i][j] = prop_offset;
         
         }
     }
