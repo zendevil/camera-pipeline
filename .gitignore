@@ -4,4 +4,4 @@ lib
 tutorial/figures
 tutorial/frames
 tutorial/images
-*.o
+tutotial/*.o
