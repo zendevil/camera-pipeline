@@ -1,6 +1,5 @@
 #include <vector>
 extern const int K;
-
 using namespace std;
 
 void get_input();
@@ -11,22 +10,26 @@ int i_right_child(int i);
 void swap_element(vector<vector<short>>* a, int b, int c);
 void sift_down(vector<vector<short>> *a, int start, int end);
 void heapify(vector<vector<short>>* a);
-void sort_heap_last_element(vector<vector<short>>* a);
+void sort_neighbors(vector<vector<short>>* a);
 void print_heap(vector<vector<short>> heap, int x, int y);
 vector<short> get_neighbor_ssd(short x, short y);
-short get_rand_x_y();
-vector<short> get_rand_coord();
+short get_random_x_y();
+vector<short> get_random_coord();
 void print_v_i(vector<short> v_i);
 void print_coord(short* coord);
-void init_neighbors();
+void initiate_neighbors();
 void print_buffer(short x, short y, short x_i, short y_i, short c);
-short get_rand_x();
-short get_rand_y();
+short get_random_x();
+short get_random_y();
 void fill_buffer(short x, short y, vector<vector<short>> neighbors);
-void print_neighbors(short x, short y);
 vector<vector<short>> sort_neighbors(vector<vector<short>> neighbors); 
-void propagate_scanline();
-void propagate_r_scanline();
 void push_in_heap(vector<vector<short>>* heap_loc, vector<short> element); 
-void print_offset_ssd(vector<short> offset_ssd);
+void print_offsets_and_ssds(vector<short> offset_ssd);
 void random_search();
+void print_neighbors(vector<vector<short>>* heap);
+void load_halide_functions();
+void generate_random_offsets_and_ssds(short x, short y, vector<vector<short>>* neighbors);
+void propagate_scanline(short x, short y);
+void propagate_reverse_scanline(short x, short y);
+void propagate_neighbors();
+short calculate_new_ssd(short x, short y, short x_i, short y_i, short ssd, char direction);

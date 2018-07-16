@@ -17,13 +17,15 @@ int i_parent(int i) {return (i-1) / 2;}
 int i_left_child(int i) {return 2 * i + 1;}
 int i_right_child(int i) {return 2 * i + 2;}
 
-void swap_element(vector<vector<int16_t>>* a, int b, int c) {
+void swap_element(vector<vector<int16_t>>* a, int b, int c) 
+{
 	vector<int16_t> temp = a->at(b);
 	a->at(b) = a->at(c);
 	a->at(c) = temp;
 }
 
-void sift_down(vector<vector<int16_t>> *a, int start, int end) {
+void sift_down(vector<vector<int16_t>> *a, int start, int end) 
+{
 	int root = start;
 
 	while(i_left_child(root) <= end) {
@@ -47,7 +49,8 @@ void sift_down(vector<vector<int16_t>> *a, int start, int end) {
 	}
 }
 
-void heapify(vector<vector<int16_t>>* a) {
+void heapify(vector<vector<int16_t>>* a) 
+{
 	int count = a->size();
 	int start = i_parent(a->size() - 1);
 
@@ -57,7 +60,8 @@ void heapify(vector<vector<int16_t>>* a) {
 	}
 }
 
-void sort_heap_last_element(vector<vector<int16_t>>* a) {
+void sort_neighbors(vector<vector<int16_t>>* a) 
+{
 	heapify(a);
 	int end = a->size() - 1;
 
@@ -66,12 +70,28 @@ void sort_heap_last_element(vector<vector<int16_t>>* a) {
 		end -= 1;
 		sift_down(a, 0, end);
 	}
+}
 
-
+void push_in_heap(vector<vector<short>>* my_vector, vector<short> element)
+{
+    vector<vector<short>>::iterator it = my_vector->begin();
+    for(uint i = 0; i < my_vector->size() - 1; ++i) {
+        
+        if((it + i)->at(2) < element.at(2) && (it + i + 1)->at(2) > element.at(2)) {    
+            my_vector->insert(it + i + 1, element);
+            return;
+        }
+    }
+    
+    my_vector->insert(my_vector->end(), element);
+     
 }
 
 
-void print_heap(vector<vector<int16_t>> heap, int x, int y) {
+
+
+void print_heap(vector<vector<int16_t>> heap, int x, int y) 
+{
 	cout<<"Heap"<<endl;
 	cout<<"y "<<y<<" x "<<x<<endl;
 	for(uint i = 0; i < heap.size(); i++) {
@@ -83,7 +103,8 @@ void print_heap(vector<vector<int16_t>> heap, int x, int y) {
 	cout<<endl;
 }
 
-void print_v_i(vector<short> v_i) {
+void print_v_i(vector<short> v_i) 
+{
 	cout<<"Printing v_i"<<endl;
 	for(int i = 0; i < 3; i++) {
 		switch(i) {
@@ -106,7 +127,8 @@ void print_v_i(vector<short> v_i) {
 	}
 }
 
-void print_coord(short* coord) {
+void print_coord(short* coord) 
+{
 	cout<<"print_coord()"<<endl;
 	cout<<"x "<<coord[0]<<endl;
 	cout<<"y "<<coord[1]<<endl;
